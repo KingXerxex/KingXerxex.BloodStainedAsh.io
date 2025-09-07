@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Dallow</title>
+    <style>
+        /* --- Basic Setup & Colors --- */
+        :root {
+            --background-color: #15202B;
+            --container-color: #192734;
+            --text-color: #ffffff;
+            --secondary-text-color: #8899a6;
+            --accent-color: #1DA1F2;
+            --border-color: #38444d;
+            --danger-color: #e0245e;
+        }
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+        }
+        a { color: var(--accent-color); text-decoration: none; }
+        
+        /* --- CHIRPER VIEW STYLES --- */
+        .chirper-container { display: flex; justify-content: center; max-width: 1000px; margin: 0 auto; }
+        .sidebar { width: 200px; padding: 20px; border-right: 1px solid var(--border-color); height: 100vh; }
+        .sidebar h2 { font-size: 20px; }
+        .sidebar ul { list-style-type: none; padding: 0; }
+        .sidebar li { padding: 15px 0; font-size: 18px; font-weight: bold; }
+        .feed { width: 600px; border-right: 1px solid var(--border-color); }
+        .feed-header { padding: 15px; font-size: 20px; font-weight: bold; border-bottom: 1px solid var(--border-color); }
+        .tweet { display: flex; padding: 15px; border-bottom: 1px solid var(--border-color); }
+        .tweet-content-wrapper { width: 100%; }
+        .tweet-header { display: flex; align-items: center; margin-bottom: 5px; }
+        .tweet-header strong { font-size: 16px; }
+        .tweet-header span { color: var(--secondary-text-color); margin-left: 8px; }
+        .pfp { width: 48px; height: 48px; border-radius: 50%; margin-right: 12px; }
+        .tweet-content { margin: 0; font-size: 15px; line-height: 1.4; }
+        .tweet-actions { display: flex; justify-content: space-around; margin-top: 15px; color: var(--secondary-text-color); }
+        .sidebar-right { width: 300px; padding: 20px; }
+        .apply-box { background-color: #192734; border-radius: 15px; padding: 20px; margin-top: 20px; }
+        .apply-box h3 { margin-top: 0; }
+        .apply-box p { color: var(--secondary-text-color); font-size: 14px; }
+        .apply-button { display: block; width: 100%; padding: 12px; background-color: var(--accent-color); color: var(--text-color); font-weight: bold; text-align: center; border-radius: 20px; margin-top: 15px; border: none; cursor: pointer;}
+        /* --- APPLICATION VIEW STYLES --- */
+        .application-container { max-width: 600px; margin: 50px auto; padding: 30px; background-color: var(--container-color); border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); text-align: center; }
+        .application-container h1 { color: var(--text-color); margin-bottom: 10px; }
+        .application-container p { color: var(--secondary-text-color); line-height: 1.5; }
+        .application-container input, .application-container select { width: 90%; padding: 12px; margin: 10px 0; background-color: var(--background-color); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-color); font-size: 16px; }
+        .application-container button { padding: 12px 25px; background-color: var(--accent-color); color: white; border: none; border-radius: 20px; cursor: pointer; font-size: 16px; font-weight: bold; margin-top: 20px; transition: background-color 0.3s ease; }
+        .application-container button:hover { background-color: #1a91da; }
+        .agent-selection { margin: 20px 0; }
+        .agent-choice { display: inline-block; margin: 0 20px; }
+        .agent-choice label { font-weight: bold; }
+        #result { margin-top: 30px; background-color: var(--background-color); padding: 20px; border-radius: 4px; border: 1px dashed var(--border-color); display: none; }
+        #accessKey { font-weight: bold; font-family: monospace; font-size: 1.3em; color: var(--danger-color); word-wrap: break-word; }
+    </style>
+</head>
+<body>
+
+<div id="chirper-view">
+    <div class="container chirper-container">
+        <aside class="sidebar">
+            <h2>🐦 Cardinal</h2>
+            <ul><li>🏠 Home</li><li># Explore</li><li><a href="https://veiled-vision-studios.itch.io/blood-stained-ash">Itch.io</a></li><li><a href="https://vxtwitter.com/VeiledVision_VN">Official X</a></li></ul>
+        </aside>
+        <main class="feed">
+            <div class="feed-header">Home</div>
+            <article class="tweet">
+                <img src="https://i.imgur.com/uC521m8.png" alt="Stryx PFP" class="pfp"> <div class="tweet-content-wrapper">
+                    <div class="tweet-header"><strong>Stryx</strong><span>@DallowRoast · 2h</span></div>
+                    <p class="tweet-content">Perfect day for a fresh pot of coffee. You never know who'll walk in or what secrets you'll overhear. 😉 #Dallow #CoffeeAndConspiracy</p>
+					<div class="tweet-actions">
+						<span>↩</span> <span>🔃</span> <span>❤️</span> <span>📤</span>
+					</div>
+                </div>
+            </article>
+			<article class="tweet">
+            <img src="images/pfp_adeline.png" alt="Adeline PFP" class="pfp">
+            <div class="tweet-content-wrapper">
+                <div class="tweet-header">
+                    <strong>Adeline</strong>
+                    <span>@CrimsonWatcher · 5h</span>
+                </div>
+                <p class="tweet-content">Saw the most beautiful new arrival in the garden today. So full of potential. I'm going to make sure nothing ever harms it. Ever.</p>
+                <div class="tweet-actions">
+                    <span>↩</span> <span>🔃</span> <span>❤️</span> <span>📤</span>
+                </div>
+            </div>
+			</article>
+
+			<article class="tweet">
+				<img src="images/pfp_luca.png" alt="Luca PFP" class="pfp">
+				<div class="tweet-content-wrapper">
+					<div class="tweet-header">
+						<strong>L.</strong>
+						<span>@Warden_L · 8h</span>
+					</div>
+					<p class="tweet-content">The final piece is in place. Everything is proceeding as it should. Destiny cannot be denied.</p>
+					<div class="tweet-actions">
+						<span>↩</span> <span>🔃</span> <span>❤️</span> <span>📤</span>
+					</div>
+				</div>
+			</article>
+			
+			<article class="tweet">
+				<img src="images/pfp_lolita.png" alt="Lolita PFP" class="pfp">
+				<div class="tweet-content-wrapper">
+					<div class="tweet-header">
+						<strong>Lolita Vance</strong>
+						<span>@Veil_HR_Dept · 11h</span>
+					</div>
+					<p class="tweet-content">Processing another intake file. The coffee machine in Command is a war criminal and needs to be tried for its crimes. #AshenVeil #CorporateLife</p>
+					<div class="tweet-actions">
+						<span>↩</span> <span>🔃</span> <span>❤️</span> <span>📤</span>
+					</div>
+				</div>
+			</article>
+             </main>
+        <aside class="sidebar-right">
+            <div class="apply-box">
+                <h3>Ready for a New Life?</h3>
+                <p>The Commonwealth Condominiums offers unparalleled security, community, and purpose. Your future is waiting. Apply for residency today.</p>
+                <button class="apply-button" onclick="showApplication()">Apply Now</button>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<div id="application-view" style="display: none;">
+    <div class="container application-container">
+        <h1>Commonwealth Condominiums - Residency Application</h1>
+        <p>Your information is secure. Please complete the following form to generate your encrypted access key and retrieve your welcome packet.</p>
+        <input type="text" id="fullName" placeholder="Full Name (e.g., Robin Evergarden)">
+        <select id="pronouns">
+			<option value="They/Them"></option>
+            <option value="He/Him">Pronouns: He/Him</option>
+            <option value="She/Her">Pronouns: She/Her</option>
+            <option value="They/Them">Pronouns: They/Them</option>
+        </select>
+        <p>Please select your designated Welcome Agent:</p>
+        <div class="agent-selection">
+            <div class="agent-choice">
+                <label for="agentAdeline">Adeline</label><br>
+                <input type="radio" id="agentAdeline" name="agent" value="Adeline" checked>
+            </div>
+            <div class="agent-choice">
+                <label for="agentLuca">Luca</label><br>
+                <input type="radio" id="agentLuca" name="agent" value="Luca">
+            </div>
+        </div>
+        <button onclick="generateKey()">Generate Access Key</button>
+        <div id="result">
+            <h3>Access Key Generated</h3>
+            <p>Copy this key exactly. It is required for your residency validation.</p>
+            <p id="accessKey"></p>
+            <hr style="border-color: var(--border-color);">
+            <p>Your Welcome Packet is now available:</p>
+            <a href="YOUR_GAME_DOWNLOAD_LINK_HERE">Download Welcome Packet [Encrypted]</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- The JavaScript for functionality ---
+
+    const SECRET_KEY = "AshenVeilSecretKey2025";
+    const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 /-.";
+    const SHIFT_KEY = 7;
+
+    // Function to switch between the two views
+    function showApplication() {
+        document.getElementById('chirper-view').style.display = 'none';
+        document.getElementById('application-view').style.display = 'block';
+    }
+
+    function caesarCipher(text){let result="";for(let i=0;i<text.length;i++){const char=text[i];const index=ALPHABET.indexOf(char);if(index===-1){result+=char}else{const newIndex=(index+SHIFT_KEY)%ALPHABET.length;result+=ALPHABET[newIndex]}}return result}
+    function generateKey(){let fullName=document.getElementById('fullName').value;let pronouns=document.getElementById('pronouns').value.replace("/","-");let yandere=document.querySelector('input[name="agent"]:checked').value;if(fullName.trim()===""){alert("Please enter your full name.");return}const rawData=`${fullName}/${pronouns}/${yandere}`;const finalKey=caesarCipher(rawData);document.getElementById('accessKey').innerText=finalKey;document.getElementById('result').style.display='block'}
+</script>
+
+</body>
+</html>
